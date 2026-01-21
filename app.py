@@ -34,7 +34,7 @@ def create_app():
     
     # Configuration CORS pour permettre les requêtes depuis le frontend React
     # En production, utiliser l'URL du frontend déployé
-    frontend_urls = os.getenv('FRONTEND_URL', 'http://localhost:3000', 'https://clinique.adbm-it.com').split(',')
+    frontend_urls = os.getenv('FRONTEND_URL', 'https://clinique.adbm-it.com').split(',')
     allowed_origins = [
         "https://clinique.adbm-it.com",
         "http://localhost:3000",
