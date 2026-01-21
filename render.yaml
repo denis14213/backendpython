@@ -6,8 +6,9 @@ services:
     region: frankfurt
     plan: free
     branch: main
+    rootDir: backend
     buildCommand: pip install -r requirements.txt
-    startCommand: gunicorn app:app
+    startCommand: gunicorn wsgi:app
     envVars:
       - key: PYTHON_VERSION
         value: 3.11.0
@@ -19,6 +20,8 @@ services:
         value: False
       - key: MONGODB_URI
         sync: false
+      - key: MONGODB_DB_NAME
+        value: clinique_db
       - key: SESSION_COOKIE_SECURE
         value: True
       - key: SESSION_COOKIE_HTTPONLY
@@ -27,3 +30,5 @@ services:
         value: None
       - key: SESSION_TIMEOUT
         value: 3600
+      - key: FRONTEND_URL
+        value: http://localhost:3000
