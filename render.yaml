@@ -1,0 +1,29 @@
+services:
+  # Backend API
+  - type: web
+    name: clinique-backend
+    env: python
+    region: frankfurt
+    plan: free
+    branch: main
+    buildCommand: pip install -r requirements.txt
+    startCommand: gunicorn app:app
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.11.0
+      - key: SECRET_KEY
+        generateValue: true
+      - key: FLASK_ENV
+        value: production
+      - key: FLASK_DEBUG
+        value: False
+      - key: MONGODB_URI
+        sync: false
+      - key: SESSION_COOKIE_SECURE
+        value: True
+      - key: SESSION_COOKIE_HTTPONLY
+        value: True
+      - key: SESSION_COOKIE_SAMESITE
+        value: None
+      - key: SESSION_TIMEOUT
+        value: 3600
